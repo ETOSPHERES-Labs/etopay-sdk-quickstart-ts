@@ -23,6 +23,7 @@
     "@cawaena/cawaena-sdk-wasm": "0.14.1-rc0",
     "dotenv": "^16.4.7",
     "typescript": "^5.8.2",
-    "node-localstorage": "^3.0.5"
+    "node-localstorage": "^3.0.5",
+    "axios": "^1.7.2"
   }
 }
