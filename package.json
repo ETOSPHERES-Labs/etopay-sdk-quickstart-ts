@@ -1,0 +1,29 @@
+{
+  "name": "cawaena-sdk-quickstart-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ETOSPHERES-Labs/cawaena-sdk-quickstart-ts.git"
+  },
+  "keywords": [],
+  "author": "Team Lobster 🦞",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ETOSPHERES-Labs/cawaena-sdk-quickstart-ts/issues"
+  },
+  "homepage": "https://github.com/ETOSPHERES-Labs/cawaena-sdk-quickstart-ts#readme",
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "@types/node": "^18.15.11"
+  },
+  "dependencies": {
+    "@cawaena/cawaena-sdk-wasm": "0.14.1-rc0",
+    "dotenv": "^16.4.7",
+    "typescript": "^5.8.2",
+    "node-localstorage": "^3.0.5",
+    "axios": "^1.7.2"
+  }
+}
