@@ -18,7 +18,7 @@ async function main() {
     const sdk = await new ETOPaySdk();
     console.log("SDK initialized successfully ..");
 
-    // Set the SDK configuration. Get it from the dashboard: https://dashboard.cawaena.com
+    // Set the SDK configuration. Get it from the dashboard: https://etopayapp.etospheres.com
     let auth_provider = "";
     sdk.setConfig(JSON.stringify({
         auth_provider: auth_provider,
