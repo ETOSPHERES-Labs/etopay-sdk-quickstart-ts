@@ -38,7 +38,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      
+      # Install Bun
+      - name: Install Bun
+        run: |
+          curl -fsSL https://bun.sh/install | bash
+          export BUN_BIN="$HOME/.bun/bin"
+          echo "$BUN_BIN" >> $GITHUB_PATH
 
       - name: Install dependencies
         run: bun install
@@ -50,7 +56,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      
+      # Install Bun
+      - name: Install Bun
+        run: |
+          curl -fsSL https://bun.sh/install | bash
+          export BUN_BIN="$HOME/.bun/bin"
+          echo "$BUN_BIN" >> $GITHUB_PATH
 
       - name: Install dependencies
         run: bun install
