@@ -1,4 +1,4 @@
-import { CryptpaySdk } from "@cawaena/cawaena-sdk-wasm";
+import { ETOPaySdk } from "@etospheres/etopay-sdk-wasm";
 import * as dotenv from 'dotenv';
 const { LocalStorage } = require("node-localstorage");
 import { getAccessToken } from './utils';
@@ -15,7 +15,7 @@ async function main() {
     globalThis.window = { localStorage: new LocalStorage('./local-storage') } as any;
 
     // Initialize the SDK
-    const sdk = await new CryptpaySdk();
+    const sdk = await new ETOPaySdk();
     console.log("SDK initialized successfully ..");
 
     // Set the SDK configuration. Get it from the dashboard: https://dashboard.cawaena.com
@@ -39,7 +39,7 @@ async function main() {
     console.log("Access token generated successfully .. ");
 
     // Get list of available networks
-    let networks = await sdk.get_networks();
+    let networks = await sdk.getNetworks();
     console.log("Get network list success: ", networks);
 
     // Select which network to use
