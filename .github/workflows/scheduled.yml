@@ -23,10 +23,10 @@ jobs:
       - uses: actions/setup-node@v4
 
       - name: Install dependencies
-        run: npm install
+        run: bun install
 
       - name: Check TypeScript builds
-        run: npx tsc --noEmit # makes sure the code compiles without generating .js file.
+        run: bun tsc --noEmit # makes sure the code compiles without generating .js file.
 
   lint:
     runs-on: ubuntu-latest
@@ -35,10 +35,10 @@ jobs:
       - uses: actions/setup-node@v4
 
       - name: Install dependencies
-        run: npm install
+        run: bun install
 
       - name: Run ESLint
-        run: npx eslint . --max-warnings=0
+        run: bun eslint . --max-warnings=0
 
   test:
     runs-on: ubuntu-latest
@@ -47,7 +47,7 @@ jobs:
       - uses: actions/setup-node@v4
 
       - name: Install dependencies
-        run: npm install
+        run: bun install
 
       - name: Run tests
-        run: npm test
+        run: bun test

@@ -10,8 +10,12 @@ The ETOPay SDK is available on NPM, making it easy to integrate into your projec
 To install it as a dependency, simply run the following command in your project directory: 
 
 ```bash
-npm install @etospheres/etopay-sdk-wasm
+bun install @etospheres/etopay-sdk-wasm
 ```
+
+!!! Note
+
+Currently, we only support `bun` for running the SDK, as `node` does not work correctly with the current version. We recommend using `bun` to ensure proper functionality.
 
 This will add the ETOPay SDK to your project, and you'll be ready to start using it (as it is already done in this example)! 😊
 
