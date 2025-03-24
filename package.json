@@ -14,11 +14,15 @@
   "bugs": {
     "url": "https://github.com/ETOSPHERES-Labs/cawaena-sdk-quickstart-ts/issues"
   },
+  "scripts": {
+    "test": "vitest"
+  },
   "homepage": "https://github.com/ETOSPHERES-Labs/cawaena-sdk-quickstart-ts#readme",
   "devDependencies": {
     "@types/node": "22.13.12",
+    "@typescript-eslint/parser": "^8.27.0",
     "ts-node": "^10.9.2",
-    "@typescript-eslint/parser": "^8.27.0"
+    "vitest": "^3.0.9"
   },
   "dependencies": {
     "@cawaena/cawaena-sdk-wasm": "0.14.1-rc0",
