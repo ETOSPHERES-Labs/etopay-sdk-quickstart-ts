@@ -40,7 +40,7 @@ async function main() {
 
     // Get list of available networks
     let networks = await sdk.get_networks();
-    console.log("Get network list success .. ");
+    console.log("Get network list success: ", networks);
 
     // Select which network to use
     await sdk.setNetwork("67a1f08edf55756bae21e7eb");

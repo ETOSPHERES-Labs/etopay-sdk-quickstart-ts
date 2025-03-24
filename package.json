@@ -16,14 +16,15 @@
   },
   "homepage": "https://github.com/ETOSPHERES-Labs/cawaena-sdk-quickstart-ts#readme",
   "devDependencies": {
+    "@types/node": "22.13.12",
     "ts-node": "^10.9.2",
-    "@types/node": "^18.15.11"
+    "@typescript-eslint/parser": "^8.27.0"
   },
   "dependencies": {
     "@cawaena/cawaena-sdk-wasm": "0.14.1-rc0",
+    "axios": "^1.8.4",
     "dotenv": "^16.4.7",
-    "typescript": "^5.8.2",
     "node-localstorage": "^3.0.5",
-    "axios": "^1.7.2"
+    "typescript": "^5.8.2"
   }
 }
