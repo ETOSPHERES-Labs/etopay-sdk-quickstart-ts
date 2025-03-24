@@ -67,3 +67,4 @@ package-lock.json
 tsconfig.tsbuildinfo
 local-storage/
 .env
+bun.lock
