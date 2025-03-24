@@ -1,0 +1,62 @@
+name: "scheduled"
+on:
+  # allow manually triggering
+  workflow_dispatch:
+
+  # run this every night to make sure nothing breaks
+  schedule:
+    - cron: "0 0 * * *"
+
+  # run on push to any branch
+  push:
+
+# cancel the job if a newer pipeline starts for the same MR or branch
+concurrency:
+  group: scheduled-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Check TypeScript builds
+        run: npx tsc --noEmit # makes sure the code compiles without generating .js file.
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run ESLint
+        run: npx eslint . --max-warnings=0
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
