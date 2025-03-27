@@ -1,5 +1,5 @@
 import { ETOPaySdk } from "@etospheres/etopay-sdk-wasm-node";
-import { expect, test } from "vitest";
+const { expect, test } = require("vitest");
 
 test("SDK dependency works", () => {
   // init sdk
