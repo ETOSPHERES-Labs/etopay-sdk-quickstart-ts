@@ -1,28 +1,37 @@
 
 # Introduction
 
-This is a quickstart example of how to use the ETOPay SDK to create a new wallet and generate the first receiver address.
+These are two quickstart examples of how to use the ETOPay SDK to create a new wallet and generate the first receiver address. The _node-example_ is developed with `Typescript` while the _web-example_ is developed with `React`.
 
 ## Installation
 
-The ETOPay SDK is available on NPM, making it easy to integrate into your project. You can find it here: [ETOPay SDK on NPM](https://www.npmjs.com/package/@etospheres/etopay-sdk-wasm-node).
+The ETOPay SDK is available on NPM, making it easy to integrate into your project. You can find it here:  
+
+* Node - [ETOPay SDK Node](https://www.npmjs.com/package/@etospheres/etopay-sdk-wasm-node).
+* Web - [ETOPay SDK Web](https://www.npmjs.com/package/@etospheres/etopay-sdk-wasm-web).
 
 To install it as a dependency, simply run the following command in your project directory: 
 
 ```bash
 bun install @etospheres/etopay-sdk-wasm-node
 ```
+or
+
+```bash
+bun install @etospheres/etopay-sdk-wasm-web
+```
 
 > Currently, we only support `bun` for running the SDK, as `node` does not work correctly with the current version. We recommend using `bun` to ensure proper functionality.
 
-This will add the ETOPay SDK to your project, and you'll be ready to start using it (as it is already done in this example)! 😊
+This will add the ETOPay SDK to your project, and you'll be ready to start using it (as it is already done in these examples) ! 😊
 
 ## Getting started
 
 - Copy the .env.example file to .env and set the missing values
 - Go to `https://etopayapp.etospheres.com` and get the SDK configuration for you project
 - Set the SDK configuration in `src/index.ts`
-- Run the example with `ts-node src/index.ts`
+- Run the node example with `cd node-example && bun src/index.ts`
+- Run the web example with `cd web-example && bun run dev`
 
 ## Snippets
 

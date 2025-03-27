@@ -10,7 +10,10 @@
   },
   "dependencies": {
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "@etospheres/etopay-sdk-wasm-web": "^0.14.0",
+    "axios": "^1.8.4",
+    "dotenv": "^16.4.7"
   },
   "devDependencies": {
     "@rsbuild/core": "^1.2.16",
