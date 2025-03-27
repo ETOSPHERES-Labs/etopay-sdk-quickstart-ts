@@ -1,4 +1,4 @@
-name: "scheduled"
+name: "scheduled-node"
 on:
   # allow manually triggering
   workflow_dispatch:
@@ -29,11 +29,11 @@ jobs:
           echo "$BUN_BIN" >> $GITHUB_PATH
 
       - name: Install dependencies
-        working-directory: node_example
+        working-directory: node-example
         run: bun install
 
       - name: Check TypeScript builds
-        working-directory: node_example
+        working-directory: node-example
         run: bun tsc --noEmit # ensures the code compiles without generating .js file.
 
   lint:
@@ -49,11 +49,11 @@ jobs:
           echo "$BUN_BIN" >> $GITHUB_PATH
 
       - name: Install dependencies
-        working-directory: node_example
+        working-directory: node-example
         run: bun install
 
       - name: Run ESLint
-        working-directory: node_example
+        working-directory: node-example
         run: bun eslint . --max-warnings=0
 
   test:
@@ -69,9 +69,9 @@ jobs:
           echo "$BUN_BIN" >> $GITHUB_PATH
 
       - name: Install dependencies
-        working-directory: node_example
+        working-directory: node-example
         run: bun install
 
       - name: Run tests
-        working-directory: node_example
+        working-directory: node-example
         run: bun test
