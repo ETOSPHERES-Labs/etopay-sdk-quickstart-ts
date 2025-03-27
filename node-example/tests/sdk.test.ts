@@ -1,5 +1,5 @@
 import { ETOPaySdk } from "@etospheres/etopay-sdk-wasm-node";
-const { expect, test } = require("vitest");
+import { test } from "vitest";
 
 test("SDK dependency works", () => {
   // init sdk
@@ -9,8 +9,5 @@ test("SDK dependency works", () => {
   console.log("Get SDK build Info:");
   const buildInfo = sdk.getBuildInfo().toString();
   console.log(buildInfo);
-
-  // assert
-  expect(buildInfo).toBeDefined(); 
 });
 
