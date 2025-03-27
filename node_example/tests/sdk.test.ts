@@ -1,4 +1,4 @@
-import { ETOPaySdk } from "@etospheres/etopay-sdk-wasm";
+import { ETOPaySdk } from "@etospheres/etopay-sdk-wasm-node";
 import { expect, test } from "vitest";
 
 test("SDK dependency works", () => {

@@ -1,4 +1,4 @@
-import { ETOPaySdk } from "@etospheres/etopay-sdk-wasm";
+import { ETOPaySdk } from "@etospheres/etopay-sdk-wasm-node";
 import * as dotenv from 'dotenv';
 const { LocalStorage } = require("node-localstorage");
 import { getAccessToken } from './utils';

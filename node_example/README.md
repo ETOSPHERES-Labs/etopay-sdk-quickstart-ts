@@ -5,12 +5,12 @@ This is a quickstart example of how to use the ETOPay SDK to create a new wallet
 
 ## Installation
 
-The ETOPay SDK is available on NPM, making it easy to integrate into your project. You can find it here: [ETOPay SDK on NPM](https://www.npmjs.com/package/@etospheres/etopay-sdk-wasm).
+The ETOPay SDK is available on NPM, making it easy to integrate into your project. You can find it here: [ETOPay SDK on NPM](https://www.npmjs.com/package/@etospheres/etopay-sdk-wasm-node).
 
 To install it as a dependency, simply run the following command in your project directory: 
 
 ```bash
-bun install @etospheres/etopay-sdk-wasm
+bun install @etospheres/etopay-sdk-wasm-node
 ```
 
 > Currently, we only support `bun` for running the SDK, as `node` does not work correctly with the current version. We recommend using `bun` to ensure proper functionality.
