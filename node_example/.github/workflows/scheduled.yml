@@ -32,7 +32,7 @@ jobs:
         run: bun install
 
       - name: Check TypeScript builds
-        run: bun tsc --noEmit # ensures the code compiles without generating .js file.
+        run: cd node_example && bun tsc --noEmit # ensures the code compiles without generating .js file.
 
   lint:
     runs-on: ubuntu-latest
@@ -47,10 +47,10 @@ jobs:
           echo "$BUN_BIN" >> $GITHUB_PATH
 
       - name: Install dependencies
-        run: bun install
+        run: cd node_example && bun install
 
       - name: Run ESLint
-        run: bun eslint . --max-warnings=0
+        run: cd node_example && bun eslint . --max-warnings=0
 
   test:
     runs-on: ubuntu-latest
@@ -65,7 +65,7 @@ jobs:
           echo "$BUN_BIN" >> $GITHUB_PATH
 
       - name: Install dependencies
-        run: bun install
+        run: cd node_example && bun install
 
       - name: Run tests
-        run: bun test
+        run: cd node_example && bun test
