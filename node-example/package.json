@@ -10,7 +10,7 @@
   "keywords": [],
   "author": "Team Lobster 🦞",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/ETOSPHERES-Labs/etopay-sdk-quickstart-ts/issues"
   },
