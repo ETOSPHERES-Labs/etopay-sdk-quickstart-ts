@@ -23,13 +23,16 @@ jobs:
 
       # Install pnpm
       - name: Install pnpm
+        working-directory: web-example
         run: npm install -g pnpm
 
       # Install project dependencies
       - name: Install dependencies
+        working-directory: web-example
         run: pnpm install
 
       # Build project
       - name: Build project
+        working-directory: web-example
         run: pnpm build
     
