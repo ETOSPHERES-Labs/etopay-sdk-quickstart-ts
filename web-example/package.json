@@ -1,22 +1,24 @@
 {
   "name": "web-example",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
-    "build": "rsbuild build",
-    "dev": "rsbuild dev --open",
-    "preview": "rsbuild preview"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "next": "15.2.4",
     "@etospheres/etopay-sdk-wasm-web": "^0.14.0",
     "axios": "^1.8.4",
     "dotenv": "^16.4.7"
   },
   "devDependencies": {
-    "@rsbuild/core": "^1.2.16",
-    "@rsbuild/plugin-react": "^1.1.1"
+    "eslint": "^9",
+    "eslint-config-next": "15.2.4",
+    "@eslint/eslintrc": "^3"
   }
 }
