@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  build-web-project:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -35,4 +35,23 @@ jobs:
       - name: Build project
         working-directory: web-example
         run: pnpm build
-    
+  
+  lint-web-project:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Install pnpm
+      - name: Install pnpm
+        working-directory: web-example
+        run: npm install -g pnpm
+
+      # Install project dependencies
+      - name: Install dependencies
+        working-directory: web-example
+        run: pnpm install
+
+      # Lint the code using ESLint
+      - name: Lint code
+        working-directory: web-example
+        run: pnpm lint

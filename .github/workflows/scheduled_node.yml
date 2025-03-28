@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  build-node-project:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -36,7 +36,7 @@ jobs:
         working-directory: node-example
         run: bun tsc --noEmit # ensures the code compiles without generating .js file.
 
-  lint:
+  lint-node-project:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -56,7 +56,7 @@ jobs:
         working-directory: node-example
         run: bun eslint . --max-warnings=0
 
-  test:
+  test-node-project:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
