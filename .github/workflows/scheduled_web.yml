@@ -20,6 +20,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      # Install pnpm
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      # Install project dependencies
+      - name: Install dependencies
+        run: pnpm install
+
+      # Build project
       - name: Build project
         run: pnpm build
     
