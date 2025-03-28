@@ -1,45 +1,96 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
+import init, { ETOPaySdk } from "@etospheres/etopay-sdk-wasm-web";
+import { getAccessToken } from '../utils/auth';
+
+const WALLET_PIN = "12345";
+const WALLET_PASSWORD = "Strong+Wallet+Pa55word";
 
 const Home = () => {
-  const [buildInfo, setBuildInfo] = useState(null);
-  const [wasm, setWasm] = useState(null);
+  const [sdk, setSdk] = useState(null);
+  const [address, setAddress] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const loadWasm = async () => {
+    const initializeSdk = async () => {
+      // Ensure WASM is fully initialized
+      await init();
+
       try {
-        // Import the WASM module dynamically
-        const wasmModule = await import('@etospheres/etopay-sdk-wasm-web');
+        const username = process.env.NEXT_PUBLIC_USER_NAME;
+        const password = process.env.NEXT_PUBLIC_USER_PASSWORD;
+        if (!username || !password) throw new Error("Missing credentials");
 
-        // Ensure it initializes correctly
-        await wasmModule.default();
-        setWasm(wasmModule);
+        // Ensure `window.localStorage` is available
+        if (typeof window !== "undefined" && window.localStorage) {
+          console.log("localStorage is available");
+          window.localStorage.clear();
+        } else {
+          throw new Error("localStorage is not available");
+        }
 
-        // Initialize the ETOPaySdk instance
-        const sdk = new wasmModule.ETOPaySdk();
+        // Initialize SDK
+        const sdk = new ETOPaySdk();
+        setSdk(sdk);
+        console.log("SDK initialized successfully ..");
 
-        // Get build info
-        const sdkBuildInfo = sdk.getBuildInfo();
-        console.log(sdkBuildInfo);
-        setBuildInfo(sdkBuildInfo);
+        // Set SDK config
+        let auth_provider = "13cdf1e43eef4b8fa058d9fc7dc5b044";
+        sdk.setConfig(
+          JSON.stringify({
+            auth_provider,
+            backend_url: "https://api-test-etopay-dev.etospheres.com/v1",
+            storage_path: "./",
+            log_level: "info",
+          })
+        );
+        console.log("SDK configured successfully ..");
 
+        // Create user if not already created
+        await sdk.createNewUser(username);
+        await sdk.initializeUser(username)
+        console.log("User created and initialized ..");
+
+        // Generate access token
+        const access_token = await getAccessToken(auth_provider, username, password);
+        await sdk.refreshAccessToken(access_token);
+        console.log("Access token generated successfully .. ");
+
+        // Fetch and set networks
+        const networksList = await sdk.getNetworks();
+        console.log("Networks:", networksList);
+
+        // Set a network
+        await sdk.setNetwork(networksList[0].key);
+        console.log("Network set successfully ..");
+
+        // Set wallet password
+        await sdk.setWalletPassword(WALLET_PIN, WALLET_PASSWORD);
+
+        // Create wallet if none exists
+        await sdk.createNewWallet(WALLET_PIN);
+
+        // Generate a new address
+        const newAddress = await sdk.generateNewAddress(WALLET_PIN);
+        setAddress(newAddress);
+        console.log("New Address:", newAddress);
       } catch (err) {
-        setError('Error loading SDK: ' + err.message);
-        console.error('Error loading SDK:', err);
+        setError(err.message);
+        console.error("Error:", err);
       }
     };
 
-    loadWasm();
+    initializeSdk();
   }, []);
 
   return (
     <div>
-      <h1>Build Information</h1>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {buildInfo ? (
-        <pre>{JSON.stringify(buildInfo, null, 2)}</pre>
-      ) : (
-        <p>Loading build info...</p>
+      <h1>ETOPay SDK React Integration</h1>
+      {error && <p style={{ color: "red" }}>Error: {error}</p>}
+      {address && (
+        <div>
+          <h2>Generated Address</h2>
+          <p>{address}</p>
+        </div>
       )}
     </div>
   );
