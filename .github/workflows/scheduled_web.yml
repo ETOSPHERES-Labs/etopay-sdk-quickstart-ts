@@ -1,0 +1,57 @@
+name: "scheduled-web"
+on:
+  # allow manually triggering
+  workflow_dispatch:
+
+  # run this every night to make sure nothing breaks
+  schedule:
+    - cron: "0 0 * * *"
+
+  # run on push to any branch
+  push:
+
+# cancel the job if a newer pipeline starts for the same MR or branch
+concurrency:
+  group: scheduled-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-web-project:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Install pnpm
+      - name: Install pnpm
+        working-directory: web-example
+        run: npm install -g pnpm
+
+      # Install project dependencies
+      - name: Install dependencies
+        working-directory: web-example
+        run: pnpm install
+
+      # Build project
+      - name: Build project
+        working-directory: web-example
+        run: pnpm build
+  
+  lint-web-project:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Install pnpm
+      - name: Install pnpm
+        working-directory: web-example
+        run: npm install -g pnpm
+
+      # Install project dependencies
+      - name: Install dependencies
+        working-directory: web-example
+        run: pnpm install
+
+      # Lint the code using ESLint
+      - name: Lint code
+        working-directory: web-example
+        run: pnpm lint
