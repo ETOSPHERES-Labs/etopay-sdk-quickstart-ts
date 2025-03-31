@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import init, { ETOPaySdk } from "@etospheres/etopay-sdk-wasm-web";
-import { getAccessToken } from '../utils/auth';
+import { redirectToLogin } from '../utils/auth';
 
 const WALLET_PIN = "12345";
 const WALLET_PASSWORD = "Strong+Wallet+Pa55word";
@@ -14,6 +14,9 @@ const Home = () => {
     const initializeSdk = async () => {
       // Ensure WASM is fully initialized
       await init();
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get("token"); // TODO: retieve token from a cookie
 
       try {
         const username = process.env.NEXT_PUBLIC_USER_NAME;
@@ -50,17 +53,20 @@ const Home = () => {
         await sdk.initializeUser(username)
         console.log("User created and initialized ..");
 
-        // Generate access token
-        const access_token = await getAccessToken(auth_provider, username, password);
-        await sdk.refreshAccessToken(access_token);
-        console.log("Access token generated successfully .. ");
+        if (token) {
+          console.log("Access Token received:", token);
+          await sdk.refreshAccessToken(token);
+          // Store the token in localStorage or state if needed
+        } else {
+          redirectToLogin(auth_provider);
+        }
 
         // Fetch and set networks
         const networksList = await sdk.getNetworks();
         console.log("Networks:", networksList);
 
         // Set a network
-        await sdk.setNetwork(networksList[0].key);
+        await sdk.setNetwork(networksList[1].key);
         console.log("Network set successfully ..");
 
         // Set wallet password
@@ -83,17 +89,44 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
-      <h1>ETOPay SDK React Integration</h1>
-      {error && <p style={{ color: "red" }}>Error: {error}</p>}
+    <div style={{
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "100vh",
+      backgroundColor: "#f4f4f4",
+      fontFamily: "Arial, sans-serif"
+    }}>
+      <h1 style={{ color: "#333", fontSize: "24px", marginBottom: "20px" }}>
+        ETOPay SDK React Integration
+      </h1>
+
+      {error && (
+        <p style={{
+          color: "white",
+          backgroundColor: "red",
+          padding: "10px",
+          borderRadius: "5px"
+        }}>
+          Error: {error}
+        </p>
+      )}
+
       {address && (
-        <div>
-          <h2>Generated Address</h2>
-          <p>{address}</p>
+        <div style={{
+          backgroundColor: "white",
+          padding: "20px",
+          borderRadius: "10px",
+          boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)"
+        }}>
+          <h2 style={{ color: "#555", marginBottom: "10px" }}>Generated Address</h2>
+          <p style={{ fontSize: "18px", fontWeight: "bold", color: "#222" }}>{address}</p>
         </div>
       )}
     </div>
   );
+
 };
 
 export default Home;

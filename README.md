@@ -33,7 +33,16 @@ This will add the ETOPay SDK to your project, and you'll be ready to start using
 - Run the node example with `cd node-example && bun src/index.ts`
 - Run the web example with `cd web-example && pnpm run dev`
 
-> To run the web example locally, you need to enable _CORS_ for your Keycloak setup. Therefore, go to the **Clients** section in the Keycloak Admin Console, select your client and add `http://localhost:8080` to the **Web Origins** field in the **Settings** tab. Save your changes, and this will allow your app to communicate with Keycloak properly while using the (not) recommended direct access grant flow.
+#### Running Locally #### 
+
+To run the web example locally, you need to:
+
+*  Enable _CORS_ for your Keycloak setup. Therefore, go to the **Clients** section in the Keycloak Admin Console, select your client and add `http://localhost:8080` to the **Web Origins** field in the **Settings** tab.
+* Specify the _redirect URL_ to `http://localhost:8080/api/callback` in the **Valid redirect URIs**.
+
+![alt text](./web-example/images/image.png)
+
+Save your changes, and this will allow your app to communicate with Keycloak properly while using the **Standard flow**.
 
 ## Snippets
 
