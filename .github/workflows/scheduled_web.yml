@@ -10,6 +10,10 @@ on:
   # run on push to any branch
   push:
 
+defaults:
+ run:
+  working-directory: web-example
+
 # cancel the job if a newer pipeline starts for the same MR or branch
 concurrency:
   group: scheduled-${{ github.ref }}
@@ -23,17 +27,14 @@ jobs:
 
       # Install pnpm
       - name: Install pnpm
-        working-directory: web-example
         run: npm install -g pnpm
 
       # Install project dependencies
       - name: Install dependencies
-        working-directory: web-example
         run: pnpm install
 
       # Build project
       - name: Build project
-        working-directory: web-example
         run: pnpm build
   
   lint-web-project:
@@ -43,15 +44,12 @@ jobs:
 
       # Install pnpm
       - name: Install pnpm
-        working-directory: web-example
         run: npm install -g pnpm
 
       # Install project dependencies
       - name: Install dependencies
-        working-directory: web-example
         run: pnpm install
 
       # Lint the code using ESLint
       - name: Lint code
-        working-directory: web-example
         run: pnpm lint

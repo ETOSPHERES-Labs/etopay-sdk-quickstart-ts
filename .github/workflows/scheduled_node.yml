@@ -15,6 +15,10 @@ concurrency:
   group: scheduled-${{ github.ref }}
   cancel-in-progress: true
 
+defaults:
+ run:
+  working-directory: node-example
+
 jobs:
   build-node-project:
     runs-on: ubuntu-latest
@@ -29,11 +33,9 @@ jobs:
           echo "$BUN_BIN" >> $GITHUB_PATH
 
       - name: Install dependencies
-        working-directory: node-example
         run: bun install
 
       - name: Check TypeScript builds
-        working-directory: node-example
         run: bun tsc --noEmit # ensures the code compiles without generating .js file.
 
   lint-node-project:
@@ -49,11 +51,9 @@ jobs:
           echo "$BUN_BIN" >> $GITHUB_PATH
 
       - name: Install dependencies
-        working-directory: node-example
         run: bun install
 
       - name: Run ESLint
-        working-directory: node-example
         run: bun eslint . --max-warnings=0
 
   test-node-project:
@@ -69,9 +69,7 @@ jobs:
           echo "$BUN_BIN" >> $GITHUB_PATH
 
       - name: Install dependencies
-        working-directory: node-example
         run: bun install
 
       - name: Run tests
-        working-directory: node-example
         run: bun test
