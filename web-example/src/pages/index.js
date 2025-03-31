@@ -34,13 +34,13 @@ const Home = () => {
         console.log("SDK initialized successfully ..");
 
         // Set SDK config
-        let auth_provider = "13cdf1e43eef4b8fa058d9fc7dc5b044";
+        let auth_provider = "";
         sdk.setConfig(
           JSON.stringify({
             auth_provider,
-            backend_url: "https://api-test-etopay-dev.etospheres.com/v1",
-            storage_path: "./",
-            log_level: "info",
+            backend_url: "",
+            storage_path: "",
+            log_level: "",
           })
         );
         console.log("SDK configured successfully ..");
