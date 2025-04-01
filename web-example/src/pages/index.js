@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import init, { ETOPaySdk } from "@etospheres/etopay-sdk-wasm-web";
-import { redirectToLogin } from '../utils/auth';
+import { redirectToLogin, getEnvVariables } from '../utils/auth';
 
 const WALLET_PIN = "12345";
 const WALLET_PASSWORD = "Strong+Wallet+Pa55word";
@@ -19,9 +19,7 @@ const Home = () => {
       const token = urlParams.get("token"); // TODO: retieve token from a cookie
 
       try {
-        const username = process.env.NEXT_PUBLIC_USER_NAME;
-        const password = process.env.NEXT_PUBLIC_USER_PASSWORD;
-        if (!username || !password) throw new Error("Missing credentials");
+        const { username, realm } = getEnvVariables();
 
         // Ensure `window.localStorage` is available
         if (typeof window !== "undefined" && window.localStorage) {
@@ -37,10 +35,9 @@ const Home = () => {
         console.log("SDK initialized successfully ..");
 
         // Set SDK config
-        let auth_provider = "";
         sdk.setConfig(
           JSON.stringify({
-            auth_provider,
+            auth_provider: realm,
             backend_url: "",
             storage_path: "",
             log_level: "",
@@ -58,7 +55,7 @@ const Home = () => {
           await sdk.refreshAccessToken(token);
           // Store the token in localStorage or state if needed
         } else {
-          redirectToLogin(auth_provider);
+          redirectToLogin();
         }
 
         // Fetch and set networks
