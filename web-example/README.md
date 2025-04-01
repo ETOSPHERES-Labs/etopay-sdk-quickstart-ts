@@ -29,20 +29,20 @@ This will add the ETOPay SDK to your project, and you'll be ready to start using
 
 To run the web example locally, follow these steps in the **Settings** tab:
 
- * Enable _CORS_ in Keycloak:
-   * Go to **Clients** in the Keycloak Admin Console.
-   * Select your client.
-   * In the **Access settings** section, set **Web Origins** field to `*`.
+* Enable _Standard Flow_: 
+  * In the **Capability config** section, enable **Standard flow**.
+
+> ![standard flow](./images/capability_config.png)
+
+* Enable _CORS_ in Keycloak:
+  * Go to **Clients** in the Keycloak Admin Console.
+  * Select your client.
+  * In the **Access settings** section, set **Web Origins** field to `*`.
 
 * Set _Redirect URL_:
   * In the same **Access settings** section, set **Valid redirect URIs** field to `*`.
 
 > ![access settings](./images/access_settings.png)
-
-* Enable _Standard Flow_: 
-  * In the **Capability config** section, enable **Standard flow**.
-
-> ![standard flow](./images/capability_config.png)
 
 Save your changes to ensure proper communication between your app and Keycloak.
 
