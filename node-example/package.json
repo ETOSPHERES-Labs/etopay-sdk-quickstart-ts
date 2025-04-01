@@ -10,7 +10,7 @@
   "keywords": [],
   "author": "Team Lobster 🦞",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/ETOSPHERES-Labs/etopay-sdk-quickstart-ts/issues"
   },
@@ -25,7 +25,7 @@
     "vitest": "^3.0.9"
   },
   "dependencies": {
-    "@etospheres/etopay-sdk-wasm": "^0.14.0",
+    "@etospheres/etopay-sdk-wasm-node": "^0.14.0",
     "axios": "^1.8.4",
     "dotenv": "^16.4.7",
     "node-localstorage": "^3.0.5",

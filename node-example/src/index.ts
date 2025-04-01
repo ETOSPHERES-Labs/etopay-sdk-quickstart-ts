@@ -1,4 +1,4 @@
-import { ETOPaySdk } from "@etospheres/etopay-sdk-wasm";
+import { ETOPaySdk } from "@etospheres/etopay-sdk-wasm-node";
 import * as dotenv from 'dotenv';
 const { LocalStorage } = require("node-localstorage");
 import { getAccessToken } from './utils';
@@ -43,7 +43,7 @@ async function main() {
     console.log("Get network list success: ", networks);
 
     // Select which network to use
-    await sdk.setNetwork("67a1f08edf55756bae21e7eb");
+    await sdk.setNetwork(networks[0].key);
     console.log("Network was set successfully .. ");
 
     // Set wallet password if not set
