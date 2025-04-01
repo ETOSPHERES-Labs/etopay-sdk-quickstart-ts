@@ -21,15 +21,15 @@ This will add the ETOPay SDK to your project, and you'll be ready to start using
 
 - Copy the .env.example file to .env and set the missing values
 - Go to `https://etopayapp.etospheres.com` and get the SDK configuration for you project
-- Set the SDK configuration in `src/pages/index.js`
-- Run the web example with `pnpm run dev`
+- Set the SDK configuration in `src/pages/index.js`. And set the _auth provider_ / _realm_ in the `src/pages/api/callback.js`.
+- Run the web example with `pnpm run dev`.
 
 #### Running Locally #### 
 
 To run the web example locally, you need to:
 
-*  Enable _CORS_ for your Keycloak setup. Therefore, go to the **Clients** section in the Keycloak Admin Console, select your client and add `http://localhost:8080` to the **Web Origins** field in the **Settings** tab.
-* Specify the _redirect URL_ to `http://localhost:8080/api/callback` in the **Valid redirect URIs**.
+*  Enable _CORS_ for your Keycloak setup. Therefore, go to the **Clients** section in the Keycloak Admin Console, select your client and add `*` to the **Web Origins** field in the **Settings** tab.
+* Specify the _redirect URL_ to `*` in the **Valid redirect URIs**.
 
 ![alt text](./images/image.png)
 
