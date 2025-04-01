@@ -19,9 +19,10 @@ This will add the ETOPay SDK to your project, and you'll be ready to start using
 
 ## Getting started
 
-- Copy the .env.example file to .env and set the missing values
+- Copy the .env.example file to .env and set the missing values.
 - Go to `https://etopayapp.etospheres.com` and get the SDK configuration for you project
 - Set the SDK configuration in `src/pages/index.js`.
+> Put the **auth_provider** in the **NEXT_PUBLIC_REALM** env variable.
 - Run the web example with `pnpm run dev`.
 
 #### Running Locally #### 
