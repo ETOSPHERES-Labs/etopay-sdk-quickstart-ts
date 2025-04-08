@@ -1,4 +1,4 @@
-name: "scheduled-web"
+name: "ci-web"
 on:
   # allow manually triggering
   workflow_dispatch:

@@ -1,4 +1,4 @@
-name: "scheduled-node"
+name: "ci-node"
 on:
   # allow manually triggering
   workflow_dispatch:
