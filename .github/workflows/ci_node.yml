@@ -1,4 +1,4 @@
-name: "scheduled-node"
+name: "ci-node"
 on:
   # allow manually triggering
   workflow_dispatch:
@@ -12,7 +12,7 @@ on:
 
 # cancel the job if a newer pipeline starts for the same MR or branch
 concurrency:
-  group: scheduled-${{ github.ref }}
+  group: ci-node-${{ github.ref }}
   cancel-in-progress: true
 
 defaults:

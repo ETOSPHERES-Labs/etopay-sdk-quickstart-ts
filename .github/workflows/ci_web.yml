@@ -1,4 +1,4 @@
-name: "scheduled-web"
+name: "ci-web"
 on:
   # allow manually triggering
   workflow_dispatch:
@@ -16,7 +16,7 @@ defaults:
 
 # cancel the job if a newer pipeline starts for the same MR or branch
 concurrency:
-  group: scheduled-${{ github.ref }}
+  group: ci-web-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
