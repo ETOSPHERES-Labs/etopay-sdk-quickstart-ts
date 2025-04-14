@@ -105,4 +105,4 @@ jobs:
 
       # Run the example
       - name: Run example
-        run: bun src/index.ts
+        run: ls -al && bun src/index.ts
