@@ -1,5 +1,6 @@
 import { ETOPaySdk } from "@etospheres/etopay-sdk-wasm-node";
 import * as dotenv from 'dotenv';
+import * as fs from 'fs';
 const { LocalStorage } = require("node-localstorage");
 import { getAccessToken } from './utils';
 
@@ -17,16 +18,17 @@ async function main() {
     // Initialize the SDK
     const sdk = await new ETOPaySdk();
     console.log("SDK initialized successfully ..");
-
+    let auth_provider = (process.env.AUTH_PROVIDER as string);
     // Set the SDK configuration. Get it from the dashboard: https://etopayapp.etospheres.com
-    let auth_provider = (process.env.REALM as string);
-    sdk.setConfig(JSON.stringify({
-        auth_provider: "",
-        backend_url: "",
-        storage_path: "",
-        log_level: ""
-      }));
-    console.log("SDK was configured successfully .. ");
+    // Load configuration from config.json
+    const configPath = './config.json';
+    if (!fs.existsSync(configPath)) {
+        throw new Error(`Configuration file not found at ${configPath}`);
+    }
+    const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
+
+    // Set the SDK configuration
+    sdk.setConfig(JSON.stringify(config));
 
     // Create new user and initialize
     await sdk.createNewUser(username);
