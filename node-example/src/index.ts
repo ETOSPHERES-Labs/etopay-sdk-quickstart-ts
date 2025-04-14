@@ -19,9 +19,9 @@ async function main() {
     console.log("SDK initialized successfully ..");
 
     // Set the SDK configuration. Get it from the dashboard: https://etopayapp.etospheres.com
-    let auth_provider = "";
+    let auth_provider = (process.env.REALM as string);
     sdk.setConfig(JSON.stringify({
-        auth_provider: auth_provider,
+        auth_provider: "",
         backend_url: "",
         storage_path: "",
         log_level: ""
