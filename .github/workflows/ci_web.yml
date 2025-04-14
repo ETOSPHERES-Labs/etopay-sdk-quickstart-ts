@@ -35,7 +35,7 @@ jobs:
 
       # Build project
       - name: Build project
-        run: pnpm build
+        run: touch config.json && pnpm build
   
   lint-web-project:
     runs-on: ubuntu-latest
