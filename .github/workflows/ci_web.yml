@@ -53,3 +53,34 @@ jobs:
       # Lint the code using ESLint
       - name: Lint code
         run: pnpm lint
+  
+  mount-secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Create .env file from secret
+      - name: Create .env file
+        run: echo "${{ secrets.ENV_FILE }}" > .env
+
+      # Create config.json file from secret
+      - name: Create config.json file
+        run: echo "${{ secrets.CONFIG_JSON }}" > config.json
+
+  run-example:
+    runs-on: ubuntu-latest
+    needs: mount-secrets
+    steps:
+      - uses: actions/checkout@v4
+
+      # Install pnpm
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      # Install project dependencies
+      - name: Install dependencies
+        run: pnpm install
+
+      # Run the example
+      - name: Run example
+        run: pnpm run dev
