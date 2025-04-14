@@ -9,7 +9,7 @@ The ETOPay SDK is available on NPM, making it easy to integrate into your projec
 
 * Web - [ETOPay SDK Web](https://www.npmjs.com/package/@etospheres/etopay-sdk-wasm-web).
 
-To install it as a dependency, simply run the following command in your project directory: 
+To install it as a dependency, simply run the following command in your project directory:
 
 ```bash
 pnpm install @etospheres/etopay-sdk-wasm-web
@@ -19,17 +19,18 @@ This will add the ETOPay SDK to your project, and you'll be ready to start using
 
 ## Getting started
 
-- Copy the .env.example file to .env and set the missing values.
-- Go to `https://etopayapp.etospheres.com` and get the SDK configuration for you project
-- Set the SDK configuration in `src/pages/index.js`.
-> Put the **auth_provider** in the **NEXT_PUBLIC_REALM** env variable.
-- Run the web example with `pnpm run dev`.
+* Copy the .env.example file to .env and set the missing values.
+* Go to `https://etopayapp.etospheres.com` and get the SDK configuration for you project
+* Create `config.json` and set the SDK configuration in the file at the top-level directory.
 
-#### Running Locally #### 
+> Put the **auth_provider** in the **NEXT_PUBLIC_REALM** env variable.
+* Run the web example with `pnpm run dev`.
+
+#### Running Locally ####
 
 To run the web example locally, follow these steps in the **Settings** tab:
 
-* Enable _Standard Flow_: 
+* Enable _Standard Flow_:
   * In the **Capability config** section, enable **Standard flow**.
 
 > ![standard flow](./images/capability_config.png)
