@@ -13,10 +13,10 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { clientId, clientSecret, realm } = getEnvVariables();
+    const { authUrl, clientId, clientSecret, realm } = getEnvVariables();
 
     // URL for Keycloak's token endpoint
-    const tokenUrl = `http://keycloak:8888/realms/${realm}/protocol/openid-connect/token`;
+    const tokenUrl = `${authUrl}/realms/${realm}/protocol/openid-connect/token`;
 
     // Prepare params for the token exchange
     const params = new URLSearchParams({
