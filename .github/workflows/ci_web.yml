@@ -34,8 +34,8 @@ jobs:
         run: pnpm install
 
       - name: Create config.json file
-        run: echo "${{ secrets.CONFIG_JSON }}" > config.json
-        
+        run: echo '"${{ secrets.CONFIG_JSON }}"' > config.json
+
       # Build project
       - name: Build project
         run: pnpm build

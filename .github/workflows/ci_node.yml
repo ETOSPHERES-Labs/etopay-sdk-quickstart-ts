@@ -95,7 +95,7 @@ jobs:
 
       # Create config.json file from secret
       - name: Create config.json file
-        run: echo "${{ secrets.CONFIG_JSON }}" > config.json
+        run: echo '"${{ secrets.CONFIG_JSON }}"' > config.json
 
       # Run the example
       - name: Run example
