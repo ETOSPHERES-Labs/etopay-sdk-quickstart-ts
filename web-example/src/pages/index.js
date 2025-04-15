@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import init, { ETOPaySdk } from "@etospheres/etopay-sdk-wasm-web";
 import { redirectToLogin, getEnvVariables } from '../utils/auth';
-
+import config from '../../config.json';
 const WALLET_PIN = "666666";
 const WALLET_PASSWORD = "Strong+Wallet+P@55word";
 
@@ -34,15 +34,11 @@ const Home = () => {
         setSdk(sdk);
         console.log("SDK initialized successfully ..");
 
-        // Set SDK config
-        sdk.setConfig(
-          JSON.stringify({
-            auth_provider: realm,
-            backend_url: "",
-            storage_path: "",
-            log_level: "",
-          })
-        );
+        // Set the SDK configuration. Get it from the dashboard: https://etopayapp.etospheres.com
+        // Load configuration from config.json
+        // Set the SDK configuration
+        sdk.setConfig(JSON.stringify(config));
+
         console.log("SDK configured successfully ..");
 
         // Create user if not already created

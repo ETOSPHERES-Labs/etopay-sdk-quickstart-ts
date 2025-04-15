@@ -23,7 +23,7 @@ This will add the ETOPay SDK to your project, and you'll be ready to start using
 
 * Copy the .env.example file to .env and set the missing values
 * Go to `https://etopayapp.etospheres.com` and get the SDK configuration for you project
-* Set the SDK configuration in `src/index.ts` and also the  `auth_provider`
+* Create `config.json` and set the SDK configuration in the file at the top-level directory.
 * Run the node example with `bun src/index.ts`
 
 ### Removing the local storage
