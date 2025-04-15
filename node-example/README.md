@@ -9,7 +9,7 @@ The ETOPay SDK is available on NPM, making it easy to integrate into your projec
 
 * Node - [ETOPay SDK Node](https://www.npmjs.com/package/@etospheres/etopay-sdk-wasm-node).
 
-To install it as a dependency, simply run the following command in your project directory: 
+To install it as a dependency, simply run the following command in your project directory:
 
 ```bash
 bun install @etospheres/etopay-sdk-wasm-node
@@ -21,10 +21,14 @@ This will add the ETOPay SDK to your project, and you'll be ready to start using
 
 ## Getting started
 
-- Copy the .env.example file to .env and set the missing values
-- Go to `https://etopayapp.etospheres.com` and get the SDK configuration for you project
-- Set the SDK configuration in `src/index.ts`
-- Run the node example with `bun src/index.ts`
+* Copy the .env.example file to .env and set the missing values
+* Go to `https://etopayapp.etospheres.com` and get the SDK configuration for you project
+* Set the SDK configuration in `src/index.ts` and also the  `auth_provider`
+* Run the node example with `bun src/index.ts`
+
+### Removing the local storage
+
+If testing with the same user again, remove the local-storage folder. Since this folder contains the local user and their wallet settings, make sure you have back-ed up the mnemonic before removing. Do not attempt removal of local storage in production and ensure a safe and secure backup mechanism for the local storage.
 
 ## Snippets
 

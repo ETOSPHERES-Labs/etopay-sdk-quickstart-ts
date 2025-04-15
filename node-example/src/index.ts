@@ -3,8 +3,8 @@ import * as dotenv from 'dotenv';
 const { LocalStorage } = require("node-localstorage");
 import { getAccessToken } from './utils';
 
-const WALLET_PIN = "12345";
-const WALLET_PASSWORD = "Strong+Wallet+Pa55word";
+const WALLET_PIN = "666666";
+const WALLET_PASSWORD = "Strong+Wallet+P@55word";
 
 async function main() {
     dotenv.config();
@@ -19,13 +19,13 @@ async function main() {
     console.log("SDK initialized successfully ..");
 
     // Set the SDK configuration. Get it from the dashboard: https://etopayapp.etospheres.com
-    let auth_provider = "";
+    let auth_provider = (process.env.AUTH_PROVIDER as string);
     sdk.setConfig(JSON.stringify({
-        auth_provider: auth_provider,
+        auth_provider: "",
         backend_url: "",
         storage_path: "",
         log_level: ""
-    }));
+      }));
     console.log("SDK was configured successfully .. ");
 
     // Create new user and initialize

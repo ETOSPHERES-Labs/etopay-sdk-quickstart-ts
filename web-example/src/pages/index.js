@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import init, { ETOPaySdk } from "@etospheres/etopay-sdk-wasm-web";
 import { redirectToLogin, getEnvVariables } from '../utils/auth';
 
-const WALLET_PIN = "12345";
-const WALLET_PASSWORD = "Strong+Wallet+Pa55word";
+const WALLET_PIN = "666666";
+const WALLET_PASSWORD = "Strong+Wallet+P@55word";
 
 const Home = () => {
   const [sdk, setSdk] = useState(null);
