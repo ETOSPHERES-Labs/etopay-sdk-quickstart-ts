@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@etospheres/etopay-sdk-wasm-web": "^0.14.2",
+    "@etospheres/etopay-sdk-wasm-web": "^0.15.0",
     "axios": "^1.8.4",
     "next": "15.2.4",
     "react": "^19.0.0",
